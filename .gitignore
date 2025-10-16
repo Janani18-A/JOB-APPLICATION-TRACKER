@@ -1,0 +1,5 @@
+/job-tracker-backend/node_modules/ 
+/job-tracker-backend/.env 
+*.log 
+.DS_Store 
+.vscode/ 

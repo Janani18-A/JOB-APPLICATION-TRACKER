@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Background animation */
+body {
+ height: 100px;
+  display: flex;
+  align-items: flex-start; /* allows scrolling */
+  justify-content: center;
+  background: linear-gradient(120deg,  #021a51, #001f66, #2200ff, #1c9ca8);
+  overflow-y: auto; /* enable vertical scroll */
+  position: relative;
+  padding: 50px 0; /* space for scrolling */
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed; /* stay in place while scrolling */
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.15), transparent 60%),
+              radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15), transparent 60%);
+  animation: rotateBg 20s linear infinite; /* slower rotation for smoother effect */
+  z-index: 0;
+}
+
+@keyframes rotateBg {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Container styling */
+.sign-section {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  padding: 40px 50px;
+  width: 550px;
+  height: auto;
+  color: #fff;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  animation: float 4s ease-in-out infinite, fadeIn 1.5s ease forwards;
+  text-align: center;
+  margin-top: 50px; /* reduce margin, scrollable */
+  opacity: 0; /* start invisible for fadeIn */
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Sign Up title */
+#sign-para {
+  font-size: 2em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(0, 234, 255, 0.7);
+  animation: titlePulse 2s infinite alternate;
+}
+
+/* Title pulsing glow */
+@keyframes titlePulse {
+  0% { text-shadow: 0 0 8px rgba(0, 234, 255, 0.7); }
+  100% { text-shadow: 0 0 20px rgba(0, 234, 255, 1); }
+}
+
+/* Form styling */
+#forms {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+label {
+  font-weight: 500;
+  color:white;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease, transform 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[name="address"]:focus {
+  border-bottom-color: #00eaff;
+  box-shadow: 0 0 10px #00eaff;
+  transform: scale(1.02); /* slight zoom effect on focus */
+}
+
+/* Submit button */
+#button-sign {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  margin-top: 25px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#button-sign:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(136, 221, 244, 0.7);
+}
+
+/* Login checkbox links */
+.login-p {
+  margin-top: 20px;
+  font-size: 20px;
+  margin-left: 100px;
+
+  
+}
+
+.login-p a {
+  color: #00eaff;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.login-p a:hover {
+  text-decoration: underline;
+  color: rgb(240, 103, 103);
+}

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JobTrack — Edit Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="stylesheet" href="main.css">
+  
+</head>
+<body>
+  <header>
+    <div class="logo">JobTrack</div>
+    <nav>
+      <ul>
+        <li id="menuHome"onclick="location.href='home.html'">Home</li>
+        <li id="findjob">Find Jobs</li>
+        <li id="myjob">My Jobs</li>
+        <li>
+          <div style="position:relative">
+            <button id="dropdownBtn" class="dropdown-btn">
+              <span class="material-symbols-outlined">account_circle</span>
+              <span id="userName">User</span>
+              <span id="arrow" class="material-symbols-outlined">expand_more</span>
+            </button>
+            <div id="dropdownMenu" class="dropdown-content" role="menu" aria-hidden="true">
+              <a href="#" id="menuEdit"><span class="material-symbols-outlined">edit</span> Edit Profile</a>
+              <a href="#" id="menuDashboard"><span class="material-symbols-outlined">dashboard</span> View My Profile</a>
+              <a href="#" id="menuAppliedJobs"><span class="material-symbols-outlined">work</span> Applied & Saved Jobs</a>
+              <a href="#" id="menuContact"><span class="material-symbols-outlined">contact_support</span> Contact Us</a>
+              <a href="#" id="menuSetting"><span class="material-symbols-outlined">settings</span> Account Settings</a>
+              <a href="#" id="menuLogout" class="danger"><span class="material-symbols-outlined">logout</span> Log Out</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar card">
+      <div class="profile-head">
+        <div id="avatar" class="avatar">A</div>
+        <div>
+          <div style="font-weight:700" id="sidebarName">Athulya A</div>
+          <div class="small muted" id="sidebarEmail">athulyacse@gmail.com</div>
+          <div class="progress-container">
+            <div class="progress-label">
+              <span class="small muted">Profile completion</span>
+              <span id="progressText" class="small">0%</span>
+            </div>
+            <div class="progress" aria-hidden="true">
+              <i id="progressBar" style="width:0%"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="steps" aria-label="profile sections">
+        <button class="active" data-section="personal" id="nav_personal">
+          <span>Personal Details</span>
+          <span class="check">◦</span>
+        </button>
+        <button data-section="work" id="nav_work">
+          <span>Work Experience</span>
+          <span class="check">◦</span>
+        </button>
+        <button data-section="education" id="nav_education">
+          <span>Education</span>
+          <span class="check">◦</span>
+        </button>
+        <button data-section="skills" id="nav_skills">
+          <span>Skills</span>
+          <span class="check">◦</span>
+        </button>
+        <button data-section="career" id="nav_career">
+          <span>Career Preferences</span>
+          <span class="check">◦</span>
+        </button>
+        <button data-section="certificates" id="nav_cert">
+          <span>Certificates</span>
+          <span class="check">◦</span>
+        </button>
+        <button data-section="courses" id="nav_courses">
+          <span>Courses</span>
+          <span class="check">◦</span>
+        </button>
+        <button data-section="projects" id="nav_projects">
+          <span>Projects</span>
+          <span class="check">◦</span>
+        </button>
+        <button data-section="languages" id="nav_langs">
+          <span>Languages</span>
+          <span class="check">◦</span>
+        </button>
+        <button data-section="dashboard" id="nav_dashboard">
+          <span>Dashboard</span>
+          <span class="check">◦</span>
+        </button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <section id="contentArea" class="card">
+        <h2>Welcome</h2>
+        <p class="muted">Click <strong>Edit Profile</strong> from the top-right user menu to begin editing your profile.</p>
+      </section>
+    </main>
+  </div>
+
+  <div class="job-container">
+    <section>
+      <h2>Available Jobs</h2>
+      
+      <!-- Search and Filter Section -->
+      <div class="search-container">
+        <input type="text" id="jobSearch" class="search-input" placeholder="Search jobs by title, company, or keyword...">
+        <select id="jobFilter" class="filter-select">
+          <option value="">All Roles</option>
+          <option value="Frontend">Frontend</option>
+          <option value="Backend">Backend</option>
+          <option value="Full Stack">Full Stack</option>
+          <option value="QA">QA</option>
+          <option value="Network">Network</option>
+        </select>
+        <select id="experienceFilter" class="filter-select">
+          <option value="">All Experience Levels</option>
+          <option value="Freshers">Freshers</option>
+          <option value="0-2">0-2 Years</option>
+          <option value="1-3">1-3 Years</option>
+          <option value="2-5">2-5 Years</option>
+          <option value="3-6">3-6 Years</option>
+        </select>
+      </div>
+      
+      <div class="companies" id="jobListings">
+        <!-- Job listings will be populated here -->
+      </div>
+    </section>
+  </div>
+
+  <!-- Job Modal -->
+  <div id="jobModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">✖</span>
+      <h2 id="modalCompany"></h2>
+      <div id="modalContent"></div>
+      <a id="modalApply" href="#" target="_blank" class="apply-btn">Apply Now</a>
+    </div>
+  </div>  
+
+  <!-- Toast notifications -->
+  <div id="toastContainer"></div>
+
+  <!-- Confirmation Modal -->
+  <div id="confirmationModal" class="confirmation-modal">
+    <div class="confirmation-content">
+      <h3 id="confirmationTitle">Confirm Action</h3>
+      <p id="confirmationMessage">Are you sure you want to proceed?</p>
+      <div class="confirmation-buttons">
+         <button id="confirmOk" class="btn">OK</button>
+        <button id="confirmCancel" class="btn secondary">Cancel</button>
+       
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js">  </script>
+  
+</body>
+</html>
