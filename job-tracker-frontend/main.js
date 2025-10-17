@@ -531,7 +531,7 @@ function renderJobListings() {
           showToast('Logged out successfully', 'success');
 
           setTimeout(() => {
-      window.location.href = 'index.html';
+      window.location.href = 'home.html';
     }, 1000); // 1 second delay (you can adjust)
   });
         
